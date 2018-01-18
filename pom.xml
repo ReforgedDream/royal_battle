@@ -12,9 +12,9 @@
 
     <modules>
         <module>RoyalBattle-EAR</module>
-        <module>royalbattle-ejb</module>
-		<module>royalbattle-persistence</module>
-		<module>royalbattle-web</module>
+        <module>RoyalBattle-EJB</module>
+		<module>RoyalBattle-Persistence</module>
+		<module>RoyalBattle-Web</module>
     </modules>
 
     <build>

@@ -7,7 +7,7 @@
         <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>royalbattle-ear</artifactId>
+  <artifactId>RoyalBattle-EAR</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>ear</packaging>
   <build>

@@ -11,7 +11,7 @@
     <name>Royal Battle Parent Project</name>
 
     <modules>
-        <module>royalbattle-ear</module>
+        <module>RoyalBattle-EAR</module>
         <module>royalbattle-ejb</module>
 		<module>royalbattle-persistence</module>
 		<module>royalbattle-web</module>

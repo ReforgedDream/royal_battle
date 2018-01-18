@@ -26,6 +26,11 @@
                     <configuration>
                         <source>1.5</source>
                         <target>1.5</target>
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+							</manifest>
+						</archive>
                     </configuration>
                 </plugin>
                 <plugin>

@@ -32,7 +32,7 @@ public class DefaultServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ��������
+		
         String parameter = request.getParameter("parameter");
         
 		System.out.println("Executing doGet method from DefaultServlet");
@@ -44,8 +44,9 @@ public class DefaultServlet extends HttpServlet {
 		
 		out.println("Served at: " + request.getContextPath() + " request.getContextPath()");
 		out.println("<br>");
-		out.println("��������: " + parameter);
-		
+		out.println("Параметр: " + parameter);
+		out.println("<br>");
+		out.println("УРА ВСЁ РАБОТАЕТ КОДИРОВКА РАБОТАЕТ НАКАНЕЦТА11!");
 	}
 
 }

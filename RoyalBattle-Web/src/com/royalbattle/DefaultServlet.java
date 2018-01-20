@@ -37,16 +37,18 @@ public class DefaultServlet extends HttpServlet {
         
 		System.out.println("Executing doGet method from DefaultServlet");
 		
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType("text/html;charset=\"UTF-8\"");
 		
 		PrintWriter out = response.getWriter();
 		//out.println(testBean.testThisBean());
 		
-		out.println("Served at: " + request.getContextPath() + " request.getContextPath()");
+		out.println("Served at: " + request.getContextPath() + " <--- request.getContextPath()");
 		out.println("<br>");
-		out.println("Параметр: " + parameter);
+		out.println("Parameter: " + parameter);
 		out.println("<br>");
-		out.println("УРА ВСЁ РАБОТАЕТ КОДИРОВКА РАБОТАЕТ НАКАНЕЦТА11!");
+		out.println("Character encoding: " + response.getCharacterEncoding());
+		out.println("<br>");
+		out.println("Cyrillic text: ну наконец-то");
 	}
 
 }

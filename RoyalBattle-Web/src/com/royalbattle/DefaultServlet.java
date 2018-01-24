@@ -24,19 +24,14 @@ public class DefaultServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-    //@EJB
-    //TestBean testBean;
-    
+        
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
         String parameter = request.getParameter("parameter");
-        
-		System.out.println("Executing doGet method from DefaultServlet");
-		
+        		
 		response.setContentType("text/html;charset=\"UTF-8\"");
 		
 		PrintWriter out = response.getWriter();

@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="royalbattle-ear-0.0.1-SNAPSHOT">
+            
+    
+    <wb-module deploy-name="RoyalBattle-EAR-0.0.1-SNAPSHOT">
+                        
+        
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
+                        
+        
         <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+                
+        <dependent-module archiveName="mysql-connector-java-8.0.8-dmr.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/mysql/mysql-connector-java/8.0.8-dmr/mysql-connector-java-8.0.8-dmr.jar">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                    
+    
     </wb-module>
+        
+
 </project-modules>

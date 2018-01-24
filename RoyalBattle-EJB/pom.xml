@@ -9,7 +9,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>ejb</packaging>
   <build>
-    <sourceDirectory>ejbModule</sourceDirectory>
+    <sourceDirectory>ejbModule/src</sourceDirectory>
     <resources>
       <resource>
         <directory>ejbModule</directory>

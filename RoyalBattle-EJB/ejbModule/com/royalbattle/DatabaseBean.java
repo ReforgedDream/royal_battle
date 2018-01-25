@@ -2,6 +2,7 @@ package com.royalbattle;
 
 import utils.FileReaderBean;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,7 +21,8 @@ public class DatabaseBean {
 	private static final String PORT_NUMBER = "3306";
 	private static final String DATABASE = "rb";
 	private static final String USER_NAME = "rbapp";
-	private final String PASSWORD = new FileReaderBean(System.getProperty("user.dir") + "\\password").ReadFile();
+	private static final String PATH_TO_PASSWORD_FILE = System.getProperty("user.dir") + "/" + "password";
+	private final String PASSWORD = new FileReaderBean(PATH_TO_PASSWORD_FILE).ReadFile();
 	
     /**
      * Default constructor. 

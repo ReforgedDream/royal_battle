@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 		
 		out.println("имя пользователя " + name);
 		out.println("<br>");
-		out.println("пароль " + pass.replaceAll("*", "*"));
+		out.println("пароль " + pass.replaceAll(".", "*"));
 		out.println("<br>");
 		out.println("(если что, это не от базы данных, это то, что вы ввели на экране логина");
 		

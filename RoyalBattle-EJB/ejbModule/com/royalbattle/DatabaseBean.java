@@ -35,6 +35,8 @@ public class DatabaseBean {
 
        Connection conn = null;
        
+       System.out.println(PASSWORD);
+       
        conn = DriverManager.getConnection("jdbc:" + "mysql:" + "//" +
                        SQL_SERVER + ":" + PORT_NUMBER + "/" + DATABASE + "?" +
                        "verifyServerCertificate=false&useSSL=true" + "&" +

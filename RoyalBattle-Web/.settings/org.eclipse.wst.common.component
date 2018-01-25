@@ -13,6 +13,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/ejbModule"/>
+        <dependent-module archiveName="royalbattle-ejb-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RoyalBattle-EJB/RoyalBattle-EJB">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
                         
         
         <property name="java-output-path" value="/RoyalBattle-Web/build/classes"/>

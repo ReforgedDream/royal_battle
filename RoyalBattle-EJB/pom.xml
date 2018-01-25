@@ -12,7 +12,7 @@
     <sourceDirectory>ejbModule</sourceDirectory>
     <resources>
       <resource>
-        <directory>ejbModule</directory>
+        <directory>ejbModule/**</directory>
         <excludes>
           <exclude>**/*.java</exclude>
         </excludes>

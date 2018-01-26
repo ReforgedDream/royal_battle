@@ -1,11 +1,12 @@
 package com.royalbattle;
 
 import utils.FileReaderBean;
+import utils.SettingsConst;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -14,17 +15,11 @@ import javax.ejb.Stateless;
  * Session Bean implementation class DatabaseBean
  */
 @Stateless
-@LocalBean
 public class DatabaseBean {
 	
-	private static final String SQL_SERVER = "localhost";
-	private static final String PORT_NUMBER = "3306";
-	private static final String DATABASE = "rb";
-	private static final String USER_NAME = "rbapp";
-	private static final String PATH_TO_PASSWORD_FILE = System.getProperty("user.dir") + "/" + "password";
-	private final String PASSWORD = new FileReaderBean(PATH_TO_PASSWORD_FILE).ReadFile();
+	private final String PASSWORD = new FileReaderBean(SettingsConst.PATH_TO_PASSWORD_FILE).ReadFile();
 	
-    /**
+	/**
      * Default constructor. 
      */
     public DatabaseBean() {
@@ -36,12 +31,38 @@ public class DatabaseBean {
        Connection conn = null;
        
        conn = DriverManager.getConnection("jdbc:" + "mysql:" + "//" +
-                       SQL_SERVER + ":" + PORT_NUMBER + "/" + DATABASE + "?" +
+    		   			SettingsConst.SQL_SERVER + ":" + SettingsConst.PORT_NUMBER + "/" + SettingsConst.DATABASE + "?" +
                        "verifyServerCertificate=false&useSSL=true" + "&" +
                        "useUnicode=true" + "&" +
                        "useLegacyDatetimeCode=false&serverTimezone=UTC",
-                       USER_NAME, PASSWORD);
+                       SettingsConst.USER_NAME, PASSWORD);
 
        return conn;
+    }
+    
+    public void createTable() throws SQLException {
+    	
+    	Connection con = getConnection();
+
+        String createString =
+            "CREATE TABLE IF NOT EXISTS " + SettingsConst.DATABASE +
+            ".chars " +
+            "(id INT UNSIGNED NOT NULL AUTO_INCREMENT, " +
+            "name VARCHAR(32) NOT NULL, " +
+            "password VARCHAR(32) NOT NULL, " +
+            "health INT NOT NULL, " +
+            "damage INT NOT NULL, " +
+            "rating INT NOT NULL, " +
+            "PRIMARY KEY (id));";
+
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            stmt.executeUpdate(createString);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (stmt != null) { stmt.close(); }
+        }
     }
 }

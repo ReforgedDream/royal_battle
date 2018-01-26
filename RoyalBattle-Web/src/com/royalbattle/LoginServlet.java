@@ -43,22 +43,12 @@ public class LoginServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		out.println("имя пользователя " + name);
-		out.println("<br>");
-		out.println("пароль " + pass.replaceAll(".", "*"));
-		out.println("<br>");
-		out.println("(если что, это не от базы данных, это то, что вы ввели на экране логина");
-		
 		StringBuilder sbResponseMessage = new StringBuilder();
 		
 		try {
-			Connection conn = databaseBean.getConnection();
+			databaseBean.createTable();
 			
-			sbResponseMessage.append("Connected successfull! ").append(conn.toString());
-
-			conn.close();
-			
-			sbResponseMessage.append("<br>Is connection closed: ").append(Boolean.toString(conn.isClosed()));
+			sbResponseMessage.append("Connected successfull!");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -10,19 +10,11 @@ public abstract class SQLRequestProvider {
 		try {
 			conn.beginRequest();
 			
-
-			
 			conn.endRequest();
-			
-			
-			
+				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
 }

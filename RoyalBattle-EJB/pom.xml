@@ -24,6 +24,11 @@
         <configuration>
           <ejbVersion>3.2</ejbVersion>
           <scope>provided</scope>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>

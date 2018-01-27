@@ -2,7 +2,6 @@ package com.royalbattle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.ejb.EJB;
@@ -36,8 +35,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String name = request.getParameter("username");
-		String pass = request.getParameter("password");
+		//String name = request.getParameter("username");
+		//String pass = request.getParameter("password");
 		
 		response.setContentType("text/html;charset=\"UTF-8\"");
 		

@@ -30,8 +30,6 @@ public class DefaultServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-        String parameter = request.getParameter("parameter");
-        		
 		response.setContentType("text/html;charset=\"UTF-8\"");
 		
 		PrintWriter out = response.getWriter();

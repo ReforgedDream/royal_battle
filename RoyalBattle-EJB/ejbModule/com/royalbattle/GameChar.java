@@ -1,27 +1,46 @@
 package com.royalbattle;
 
+import exceptions.UsernameOutOfBoundsException;
+import utils.Credentials;
 import utils.SettingsConst;
 
 public class GameChar {
 
 	private final int id;
-	private String name;
-	private String password;
+	private Credentials credentials;
 	private int health;
 	private int damage;
 	private int rating;
 	
-	public GameChar(int id, String name, String password, int health, int damage, int rating) {
+	public GameChar(int id, String name, int passwordHash, int health, int damage, int rating) 
+			throws UsernameOutOfBoundsException {
+		
+		try {
+			this.setCredentials(new Credentials(name, passwordHash));
+		} catch (UsernameOutOfBoundsException e) {
+			throw new UsernameOutOfBoundsException();
+		}
+		
 		this.id = id;
-		this.setName(name);
-		this.setPassword(password);
 		this.setHealth(health);
 		this.setDamage(damage);
 		this.setRating(rating);
 	}
 	
-	public GameChar(int id, String name, String password) {
-		this(id, name, password, SettingsConst.DEFAULT_HEALTH, SettingsConst.DEFAULT_DAMAGE, 0);
+	public GameChar(int id, String name, int passwordHash) throws UsernameOutOfBoundsException {
+		this(id, name, passwordHash, SettingsConst.DEFAULT_HEALTH, SettingsConst.DEFAULT_DAMAGE, 0);
+	}
+	
+	/**
+	 * This is to conveniently create a new default character with given credentials
+	 * ID would be auto-assigned in database
+	 */
+	public GameChar(Credentials credentials) {
+		this.id = 0;
+		this.setCredentials(credentials);
+		this.setHealth(SettingsConst.DEFAULT_HEALTH);
+		this.setDamage(SettingsConst.DEFAULT_DAMAGE);
+		this.setRating(0);
 	}
 
 	/**
@@ -29,22 +48,6 @@ public class GameChar {
 	 */
 	public int getId() {
 		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public int getHealth() {
@@ -70,8 +73,26 @@ public class GameChar {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
+
+	public Credentials getCredentials() {
+		return credentials;
+	}
+
+	public void setCredentials(Credentials credentials) {
+		this.credentials = credentials;
+	}
 	
 	/**
 	 * End of getters and setters
 	 */
+	
+	@Override
+	public String toString() {
+		return "Name: " + this.getCredentials().getUsername() + ", " +
+				"ID: " + Integer.toString(this.getId()) + ", " +
+				"Rating: " + Integer.toString(this.getRating()) + ", " +
+				"Health: " + Integer.toString(this.getHealth()) + ", " +
+				"Damage: " + Integer.toString(this.getDamage());
+		
+	}
 }

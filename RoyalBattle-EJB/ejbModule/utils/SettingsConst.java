@@ -10,7 +10,7 @@ public abstract class SettingsConst {
 	public static final String PATH_TO_PASSWORD_FILE = System.getProperty("user.dir") + "/" + "password";
 	
 	public static final int MAX_NAME_LENGTH = 32;
-	public static final int MAX_USERS_COUNT = 10000;
+	public static final int MAX_USERS_COUNT = 20;
 	
 	//gameplay settings
 	public static final int DEFAULT_HEALTH = 100;

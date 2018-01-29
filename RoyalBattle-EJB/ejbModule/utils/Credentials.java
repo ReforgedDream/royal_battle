@@ -68,13 +68,12 @@ public class Credentials {
 			return false;
 		
 		Credentials other = (Credentials) obj;
-		// TODO del to hell
-		System.out.println(other.getUsername() + " " + other.getPassword() + " " + this.username + " " + this.password);
 		
-		if (this.username == other.getUsername() && 
-			this.password == other.getPassword()) {
-			
-			return true;} else {return false;}
+		if (this.username.equals(other.getUsername()) && this.password == other.getPassword()) {		
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 }

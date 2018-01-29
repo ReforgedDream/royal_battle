@@ -89,7 +89,6 @@ public class GameChar {
 	@Override
 	public String toString() {
 		return "Name: " + this.getCredentials().getUsername() + ", " +
-				"ID: " + Integer.toString(this.getId()) + ", " +
 				"Rating: " + Integer.toString(this.getRating()) + ", " +
 				"Health: " + Integer.toString(this.getHealth()) + ", " +
 				"Damage: " + Integer.toString(this.getDamage());

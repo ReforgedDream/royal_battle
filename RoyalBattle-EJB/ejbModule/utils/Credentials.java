@@ -13,11 +13,12 @@ public class Credentials {
 	public Credentials(String username, String password) throws UsernameOutOfBoundsException, PasswordIsNullException{
 		
 		if(username.length() > SettingsConst.MAX_NAME_LENGTH ||
-			username.equals(null)) {
+				username.length() < 1 ||
+				username == null) {
 			throw new UsernameOutOfBoundsException();
 		}
 		
-		if(password == null) {
+		if(password == null || password.length() < 1) {
 			throw new PasswordIsNullException();
 		}
 		
@@ -28,7 +29,8 @@ public class Credentials {
 	public Credentials(String username, int passwordHash) throws UsernameOutOfBoundsException{
 		
 		if(username.length() > SettingsConst.MAX_NAME_LENGTH ||
-			username.equals(null)) {
+				username.length() < 1 ||
+				username == null) {
 			throw new UsernameOutOfBoundsException();
 		}
 	

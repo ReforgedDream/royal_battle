@@ -46,41 +46,54 @@ public class LoginServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		String responseMessage = null;
+		StringBuilder responseMessage = new StringBuilder();
+		
+		GameChar authorizedChar = null;
 		
 		try {
 			Credentials credentials = new Credentials(request.getParameter("username"), request.getParameter("password"));
 			
-			GameChar authorizedChar = databaseBean.doLogin(credentials);
+			authorizedChar = databaseBean.doLogin(credentials);
 			
-			responseMessage = "Добро пожаловать! <br>" + authorizedChar.toString();
+			responseMessage.append("Добро пожаловать! <br>");
+			responseMessage.append(authorizedChar.toString());
 			
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
-			responseMessage = "SQL exception! " + e.getLocalizedMessage();
+			responseMessage.append("SQL exception! ");
+			responseMessage.append(e.getLocalizedMessage());
 		} catch (UsernameOutOfBoundsException e1) {
 
 			e1.printStackTrace();
-			responseMessage = "Имя пользователя должно быть не менее 1 и не более " + 
-					Integer.toString(SettingsConst.MAX_NAME_LENGTH) +
-					" символов";
+			responseMessage.append("Имя пользователя должно быть не менее 1 и не более ");
+			responseMessage.append(SettingsConst.MAX_NAME_LENGTH);
+			responseMessage.append(" символов");
 		} catch (PasswordIsNullException e2) {
 			
 			e2.printStackTrace();
-			responseMessage = "Пароль не должен быть пустым";
+			responseMessage.append("Пароль не должен быть пустым");
 		} catch (IncorrectPasswordException e3) {
 
 			e3.printStackTrace();
-			responseMessage = "Неверный пароль";
+			responseMessage.append("Неверный пароль");
 		} catch (UsersLimitReachedException e4) {
 
 			e4.printStackTrace();
-			responseMessage = "Достигнут лимит в " +
-					Integer.toString(SettingsConst.MAX_USERS_COUNT) +
-					" пользователей, регистрация невозможна";
+			responseMessage.append("Достигнут лимит в ");
+			responseMessage.append(SettingsConst.MAX_USERS_COUNT);
+			responseMessage.append(" пользователей, регистрация невозможна");
 		}
 		
-		out.println("<br><H1>" + responseMessage + "</H1>");
+		if(authorizedChar == null) {	
+			responseMessage.append("<br><form name=\"backToLoginForm\" method=\"get\" action=\"login\">");
+			responseMessage.append("<input type=\"submit\" value=\"Назад\" />");
+			responseMessage.append("</form>");
+		} else {
 
+			response.sendRedirect("game");
+		}
+		
+		out.println("<br>" + responseMessage.toString());
 	}
 }
